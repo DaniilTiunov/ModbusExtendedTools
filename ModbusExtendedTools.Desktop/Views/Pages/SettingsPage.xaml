@@ -1,5 +1,6 @@
 <Page
     Background="{DynamicResource ApplicationBackgroundBrush}"
+    FontFamily="Consolas"
     Foreground="{DynamicResource PrimaryTextBrush}"
     Title="Настройки"
     mc:Ignorable="d"
@@ -27,7 +28,7 @@
                 FontWeight="SemiBold"
                 Margin="0,0,0,12"
                 Text="Внешний вид" />
-            <ui:Card Background="{DynamicResource ApplicationBackgroundBrush}" BorderBrush="{DynamicResource BorderBrush}">
+            <ui:Card Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource BorderBrush}">
                 <Grid ColumnDefinitions="*,Auto" Margin="18,14">
                     <StackPanel Grid.Column="0" VerticalAlignment="Center">
                         <TextBlock
@@ -51,7 +52,7 @@
                 FontWeight="SemiBold"
                 Margin="0,28,0,12"
                 Text="О приложении" />
-            <ui:Card Background="{DynamicResource ApplicationBackgroundBrush}" BorderBrush="{DynamicResource BorderBrush}">
+            <ui:Card Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource BorderBrush}">
                 <StackPanel Margin="18,14">
                     <TextBlock
                         FontSize="15"
@@ -61,7 +62,7 @@
                         Foreground="{DynamicResource SecondaryTextBrush}"
                         Margin="0,6,0,0"
                         Text="Инструменты для работы с Modbus." />
-                    <Separator Background="{DynamicResource ApplicationBackgroundBrush}" Margin="0,16" />
+                    <Separator Background="{DynamicResource BorderBrush}" Margin="0,16" />
                     <Grid ColumnDefinitions="140,*" RowDefinitions="Auto,Auto">
                         <TextBlock Foreground="{DynamicResource SecondaryTextBrush}" Text="Версия" />
                         <TextBlock Grid.Column="1" Text="1.0.0" />

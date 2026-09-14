@@ -1,6 +1,8 @@
 <ui:FluentWindow
     Background="{DynamicResource ApplicationBackgroundBrush}"
     ExtendsContentIntoTitleBar="True"
+    FontFamily="Consolas"
+    FontSize="16"
     Foreground="{DynamicResource PrimaryTextBrush}"
     Height="720"
     Icon="pack://application:,,,/Resources/ModbusExtendedTools.ico"
@@ -44,19 +46,25 @@
             Grid.Row="1"
             TitleBar="{Binding ElementName=AppTitleBar}"
             x:Name="RootNavigationView">
+
             <ui:NavigationView.Resources>
                 <SolidColorBrush Color="{DynamicResource ApplicationBackgroundColor}" x:Key="NavigationViewContentBackground" />
             </ui:NavigationView.Resources>
+
             <ui:NavigationView.MenuItems>
-                <ui:NavigationViewItem Content="Home" Icon="{ui:SymbolIcon NetworkAdapter16}" />
-                <ui:NavigationViewItem Content="Data" Icon="{ui:SymbolIcon DataHistogram24}" />
+                <ui:NavigationViewItem
+                    Content="Параметры адаптера"
+                    Icon="{ui:SymbolIcon NetworkAdapter16}"
+                    TargetPageType="{x:Type pages:NetworkPage}" />
             </ui:NavigationView.MenuItems>
+
             <ui:NavigationView.FooterMenuItems>
                 <ui:NavigationViewItem
                     Content="Настройки"
                     Icon="{ui:SymbolIcon Settings24}"
                     TargetPageType="{x:Type pages:SettingsPage}" />
             </ui:NavigationView.FooterMenuItems>
+
         </ui:NavigationView>
     </Grid>
 </ui:FluentWindow>

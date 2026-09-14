@@ -17,8 +17,8 @@ public static class DesktopHost
             {
                 ConfigureApp(services);
                 ConfigureAppServices(services);
-                ConfigureViews(services);
                 ConfigureViewModels(services);
+                ConfigureViews(services);
             })
             .Build();
     }
@@ -36,14 +36,15 @@ public static class DesktopHost
 
     private static void ConfigureViews(IServiceCollection services)
     {
+        services.AddScoped<SettingsPage>();
+        services.AddScoped<NetworkPage>();
         services.AddSingleton<MainWindow>();
-        services.AddTransient<SettingsPage>();
-        services.AddTransient<NetworkPage>();
     }
 
     private static void ConfigureViewModels(IServiceCollection services)
     {
         services.AddScoped<MainWindowViewModel>();
         services.AddScoped<SettingsViewModel>();
+        services.AddScoped<NetworkViewModel>();
     }
 }

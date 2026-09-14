@@ -1,4 +1,5 @@
 using System.Windows;
+using System.Windows.Media;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 
@@ -37,6 +38,11 @@ public sealed class ThemeService : IThemeService
         var appliedTheme = ApplicationThemeManager.GetAppTheme();
         ReplaceApplicationPalette(
             appliedTheme == ApplicationTheme.Dark ? DarkPalette : LightPalette);
+
+        if (Application.Current.TryFindResource("AccentColor") is Color accentColor)
+        {
+            ApplicationAccentColorManager.Apply(accentColor, appliedTheme);
+        }
     }
 
     private static void ReplaceApplicationPalette(string palettePath)

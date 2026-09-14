@@ -1,22 +1,40 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Color x:Key="ApplicationBackgroundColor">#FFF5F7FA</Color>
+    <Color x:Key="ApplicationBackgroundColor">#FFF3F4F7</Color>
     <Color x:Key="SurfaceColor">#FFFFFFFF</Color>
-    <Color x:Key="SurfaceHoverColor">#FFE9EEF5</Color>
-    <Color x:Key="BorderColor">#FFD0D7E2</Color>
-    <Color x:Key="PrimaryTextColor">#FF18212F</Color>
-    <Color x:Key="SecondaryTextColor">#FF5D697A</Color>
-    <Color x:Key="AccentColor">#FF2563EB</Color>
-    <Color x:Key="AccentHoverColor">#FF1D4ED8</Color>
+    <Color x:Key="SurfaceHoverColor">#FFE9EBF2</Color>
+    <Color x:Key="BorderColor">#FFD8DBE3</Color>
+    <Color x:Key="PrimaryTextColor">#FF25272D</Color>
+    <Color x:Key="SecondaryTextColor">#FF686D78</Color>
+    <Color x:Key="AccentColor">#FF4B57C5</Color>
+    <Color x:Key="AccentHoverColor">#FF3E49AD</Color>
     <Color x:Key="OnAccentColor">#FFFFFFFF</Color>
-    <Color x:Key="ErrorColor">#FFDC2626</Color>
-    <SolidColorBrush x:Key="ApplicationBackgroundBrush" Color="{DynamicResource ApplicationBackgroundColor}" />
-    <SolidColorBrush x:Key="SurfaceBrush" Color="{DynamicResource SurfaceColor}" />
-    <SolidColorBrush x:Key="SurfaceHoverBrush" Color="{DynamicResource SurfaceHoverColor}" />
-    <SolidColorBrush x:Key="BorderBrush" Color="{DynamicResource BorderColor}" />
-    <SolidColorBrush x:Key="PrimaryTextBrush" Color="{DynamicResource PrimaryTextColor}" />
-    <SolidColorBrush x:Key="SecondaryTextBrush" Color="{DynamicResource SecondaryTextColor}" />
-    <SolidColorBrush x:Key="AccentBrush" Color="{DynamicResource AccentColor}" />
-    <SolidColorBrush x:Key="AccentHoverBrush" Color="{DynamicResource AccentHoverColor}" />
-    <SolidColorBrush x:Key="OnAccentBrush" Color="{DynamicResource OnAccentColor}" />
-    <SolidColorBrush x:Key="ErrorBrush" Color="{DynamicResource ErrorColor}" />
+    <Color x:Key="ErrorColor">#FFBF3F52</Color>
+    <Color x:Key="DisabledForegroundColor">#FF9A9DA6</Color>
+    <Color x:Key="SelectedRowBackgroundColor">#FFE5E8F8</Color>
+
+    <SolidColorBrush Color="{DynamicResource SurfaceColor}" x:Key="ButtonBackground" />
+    <SolidColorBrush Color="{DynamicResource SurfaceHoverColor}" x:Key="ButtonBackgroundPointerOver" />
+    <SolidColorBrush Color="{DynamicResource SelectedRowBackgroundColor}" x:Key="ButtonBackgroundPressed" />
+    <SolidColorBrush Color="{DynamicResource PrimaryTextColor}" x:Key="ButtonForeground" />
+    <SolidColorBrush Color="{DynamicResource PrimaryTextColor}" x:Key="ButtonForegroundPressed" />
+    <SolidColorBrush Color="#FFE5E7EC" x:Key="ButtonBackgroundDisabled" />
+    <SolidColorBrush Color="{DynamicResource DisabledForegroundColor}" x:Key="ButtonForegroundDisabled" />
+
+
+    <SolidColorBrush Color="{DynamicResource ApplicationBackgroundColor}" x:Key="ApplicationBackgroundBrush" />
+    <SolidColorBrush Color="{DynamicResource SurfaceColor}" x:Key="SurfaceBrush" />
+    <SolidColorBrush Color="{DynamicResource SurfaceHoverColor}" x:Key="SurfaceHoverBrush" />
+    <SolidColorBrush Color="{DynamicResource BorderColor}" x:Key="BorderBrush" />
+    <SolidColorBrush Color="{DynamicResource PrimaryTextColor}" x:Key="PrimaryTextBrush" />
+    <SolidColorBrush Color="{DynamicResource SecondaryTextColor}" x:Key="SecondaryTextBrush" />
+    <SolidColorBrush Color="{DynamicResource AccentColor}" x:Key="AccentBrush" />
+    <SolidColorBrush Color="{DynamicResource AccentHoverColor}" x:Key="AccentHoverBrush" />
+    <SolidColorBrush Color="{DynamicResource OnAccentColor}" x:Key="OnAccentBrush" />
+    <SolidColorBrush Color="{DynamicResource ErrorColor}" x:Key="ErrorBrush" />
+    <SolidColorBrush Color="{DynamicResource ApplicationBackgroundColor}" x:Key="SecondaryColor" />
+    <SolidColorBrush Color="{DynamicResource PrimaryTextColor}" x:Key="PrimaryForeground" />
+    <SolidColorBrush Color="{DynamicResource DisabledForegroundColor}" x:Key="DisabledForeground" />
+    <SolidColorBrush Color="{DynamicResource SurfaceHoverColor}" x:Key="RowHoverColor" />
+    <SolidColorBrush Color="{DynamicResource SelectedRowBackgroundColor}" x:Key="SelectedRowBackground" />
+    <SolidColorBrush Color="{DynamicResource PrimaryTextColor}" x:Key="SelectedRowForeground" />
 </ResourceDictionary>

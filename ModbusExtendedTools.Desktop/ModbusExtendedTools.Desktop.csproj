@@ -19,12 +19,15 @@
 
     <ItemGroup>
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2"/>
+        <PackageReference Include="IPNetwork2" Version="4.3.0" />
+        <PackageReference Include="MaterialDesignThemes" Version="5.4.0-ci1482" />
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.0"/>
         <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.0"/>
         <PackageReference Include="WPF-UI" Version="4.0.3"/>
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\ModbusExtendedTools.Extensions\ModbusExtendedTools.Extensions.csproj" />
         <ProjectReference Include="..\ModbusExtendedTools.Modbus\ModbusExtendedTools.Modbus.csproj"/>
         <ProjectReference Include="..\ModbusExtendedTools.Services\ModbusExtendedTools.Services.csproj"/>
     </ItemGroup>
@@ -32,6 +35,10 @@
     <ItemGroup>
       <None Remove="Resources\ModbusExtendedTools.ico" />
       <Resource Include="Resources\ModbusExtendedTools.ico" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Resources\Assets\" />
     </ItemGroup>
 
 </Project>
