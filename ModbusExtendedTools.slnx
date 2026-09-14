@@ -1,0 +1,5 @@
+<Solution>
+    <Project Path="ModbusExtendedTools.Desktop/ModbusExtendedTools.Desktop.csproj"/>
+    <Project Path="ModbusExtendedTools.Modbus/ModbusExtendedTools.Modbus.csproj"/>
+    <Project Path="ModbusExtendedTools.Services/ModbusExtendedTools.Services.csproj"/>
+</Solution>
