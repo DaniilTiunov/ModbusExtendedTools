@@ -2,6 +2,8 @@ using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using ModbusExtendedTools.Desktop.Views.Windows;
 using ModbusExtendedTools.Services.Theming;
+using Wpf.Ui.Appearance;
+using Wpf.Ui.Markup;
 
 namespace ModbusExtendedTools.Desktop.Bootstrap;
 
@@ -15,10 +17,8 @@ public sealed class App : Application
         _services = services;
         _themeService = themeService;
 
-        Resources.MergedDictionaries.Add(CreateDictionary(
-            "Resources/WpfUi.xaml"));
-        Resources.MergedDictionaries.Add(CreateDictionary(
-            "Resources/Themes/LightColors.xaml"));
+        Resources.MergedDictionaries.Add(new ThemesDictionary { Theme = ApplicationTheme.Dark });
+        Resources.MergedDictionaries.Add(new ControlsDictionary());
         Resources.MergedDictionaries.Add(CreateDictionary(
             "Resources/Themes/DarkColors.xaml"));
         Resources.MergedDictionaries.Add(CreateDictionary(

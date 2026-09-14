@@ -1,5 +1,6 @@
 using System.Windows;
 using Wpf.Ui.Appearance;
+using Wpf.Ui.Controls;
 
 namespace ModbusExtendedTools.Services.Theming;
 
@@ -21,12 +22,13 @@ public sealed class ThemeService : IThemeService
         {
             case AppTheme.System:
                 ApplicationThemeManager.ApplySystemTheme();
+                ApplicationThemeManager.Apply(ApplicationThemeManager.GetAppTheme(), WindowBackdropType.None);
                 break;
             case AppTheme.Light:
-                ApplicationThemeManager.Apply(ApplicationTheme.Light);
+                ApplicationThemeManager.Apply(ApplicationTheme.Light, WindowBackdropType.None);
                 break;
             case AppTheme.Dark:
-                ApplicationThemeManager.Apply(ApplicationTheme.Dark);
+                ApplicationThemeManager.Apply(ApplicationTheme.Dark, WindowBackdropType.None);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(theme), theme, null);

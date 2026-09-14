@@ -7,15 +7,16 @@ public partial class SettingsViewModel : ObservableObject
 {
     private readonly IThemeService _themeService;
 
-    [ObservableProperty] private AppTheme _theme;
+    [ObservableProperty] private bool _isDarkMode;
 
     public SettingsViewModel(IThemeService themeService)
     {
         _themeService = themeService;
+        _isDarkMode = themeService.CurrentTheme == AppTheme.Dark;
     }
 
-    public void ApplyTheme(AppTheme theme)
+    partial void OnIsDarkModeChanged(bool value)
     {
-        _themeService.Apply(theme);
+        _themeService.Apply(value ? AppTheme.Dark : AppTheme.Light);
     }
 }

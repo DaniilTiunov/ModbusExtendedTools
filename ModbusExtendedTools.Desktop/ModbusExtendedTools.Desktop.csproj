@@ -6,6 +6,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UseWPF>true</UseWPF>
+        <ApplicationIcon>Resources\ModbusExtendedTools.ico</ApplicationIcon>
     </PropertyGroup>
 
     <ItemGroup>
@@ -26,6 +27,11 @@
     <ItemGroup>
         <ProjectReference Include="..\ModbusExtendedTools.Modbus\ModbusExtendedTools.Modbus.csproj"/>
         <ProjectReference Include="..\ModbusExtendedTools.Services\ModbusExtendedTools.Services.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Resources\ModbusExtendedTools.ico" />
+      <Resource Include="Resources\ModbusExtendedTools.ico" />
     </ItemGroup>
 
 </Project>

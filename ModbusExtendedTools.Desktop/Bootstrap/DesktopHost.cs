@@ -3,6 +3,7 @@ using Microsoft.Extensions.Hosting;
 using ModbusExtendedTools.Desktop.ViewModels;
 using ModbusExtendedTools.Desktop.Views.Pages;
 using ModbusExtendedTools.Desktop.Views.Windows;
+using ModbusExtendedTools.Services.Adapters;
 using ModbusExtendedTools.Services.Theming;
 
 namespace ModbusExtendedTools.Desktop.Bootstrap;
@@ -30,16 +31,19 @@ public static class DesktopHost
     private static void ConfigureAppServices(IServiceCollection services)
     {
         services.AddSingleton<IThemeService, ThemeService>();
+        services.AddSingleton<AdapterService>();
     }
 
     private static void ConfigureViews(IServiceCollection services)
     {
         services.AddSingleton<MainWindow>();
         services.AddTransient<SettingsPage>();
+        services.AddTransient<NetworkPage>();
     }
 
     private static void ConfigureViewModels(IServiceCollection services)
     {
-        services.AddTransient<MainWindowViewModel>();
+        services.AddScoped<MainWindowViewModel>();
+        services.AddScoped<SettingsViewModel>();
     }
 }

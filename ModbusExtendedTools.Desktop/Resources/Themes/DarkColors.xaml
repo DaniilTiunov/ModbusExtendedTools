@@ -9,4 +9,14 @@
     <Color x:Key="AccentHoverColor">#FF93C5FD</Color>
     <Color x:Key="OnAccentColor">#FF0F172A</Color>
     <Color x:Key="ErrorColor">#FFF87171</Color>
+    <SolidColorBrush x:Key="ApplicationBackgroundBrush" Color="{DynamicResource ApplicationBackgroundColor}" />
+    <SolidColorBrush x:Key="SurfaceBrush" Color="{DynamicResource SurfaceColor}" />
+    <SolidColorBrush x:Key="SurfaceHoverBrush" Color="{DynamicResource SurfaceHoverColor}" />
+    <SolidColorBrush x:Key="BorderBrush" Color="{DynamicResource BorderColor}" />
+    <SolidColorBrush x:Key="PrimaryTextBrush" Color="{DynamicResource PrimaryTextColor}" />
+    <SolidColorBrush x:Key="SecondaryTextBrush" Color="{DynamicResource SecondaryTextColor}" />
+    <SolidColorBrush x:Key="AccentBrush" Color="{DynamicResource AccentColor}" />
+    <SolidColorBrush x:Key="AccentHoverBrush" Color="{DynamicResource AccentHoverColor}" />
+    <SolidColorBrush x:Key="OnAccentBrush" Color="{DynamicResource OnAccentColor}" />
+    <SolidColorBrush x:Key="ErrorBrush" Color="{DynamicResource ErrorColor}" />
 </ResourceDictionary>

@@ -1,11 +1,14 @@
 <ui:FluentWindow
+    Background="{DynamicResource ApplicationBackgroundBrush}"
     ExtendsContentIntoTitleBar="True"
+    Foreground="{DynamicResource PrimaryTextBrush}"
     Height="720"
-    MinHeight="560"
-    MinWidth="900"
+    Icon="pack://application:,,,/Resources/ModbusExtendedTools.ico"
+    MinHeight="800"
+    MinWidth="1200"
     Title="Modbus Extended Tools"
     Width="1200"
-    WindowBackdropType="Mica"
+    WindowBackdropType="None"
     WindowCornerPreference="Round"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d"
@@ -13,20 +16,46 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:ModbusExtendedTools.Desktop.Views.Pages"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <ui:NavigationView>
+    <Grid Background="{DynamicResource ApplicationBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ui:TitleBar
+            Background="{DynamicResource ApplicationBackgroundBrush}"
+            Foreground="{DynamicResource PrimaryTextBrush}"
+            Grid.Row="0"
+            Title="Modbus Extended Tools"
+            x:Name="AppTitleBar">
+            <ui:TitleBar.Icon>
+                <ui:ImageIcon>
+                    <ui:ImageIcon.Source>
+                        <BitmapImage UriSource="pack://application:,,,/Resources/ModbusExtendedTools.ico" />
+                    </ui:ImageIcon.Source>
+                </ui:ImageIcon>
+            </ui:TitleBar.Icon>
+        </ui:TitleBar>
+        <ui:NavigationView
+            Background="{DynamicResource ApplicationBackgroundBrush}"
+            Foreground="{DynamicResource PrimaryTextBrush}"
+            Grid.Row="1"
+            TitleBar="{Binding ElementName=AppTitleBar}"
+            x:Name="RootNavigationView">
+            <ui:NavigationView.Resources>
+                <SolidColorBrush Color="{DynamicResource ApplicationBackgroundColor}" x:Key="NavigationViewContentBackground" />
+            </ui:NavigationView.Resources>
             <ui:NavigationView.MenuItems>
-                <ui:NavigationViewItem Content="Home" Icon="{ui:SymbolIcon Home24}" />
+                <ui:NavigationViewItem Content="Home" Icon="{ui:SymbolIcon NetworkAdapter16}" />
                 <ui:NavigationViewItem Content="Data" Icon="{ui:SymbolIcon DataHistogram24}" />
             </ui:NavigationView.MenuItems>
             <ui:NavigationView.FooterMenuItems>
-                <ui:NavigationViewItem Content="Settings" Icon="{ui:SymbolIcon Settings24}" />
+                <ui:NavigationViewItem
+                    Content="Настройки"
+                    Icon="{ui:SymbolIcon Settings24}"
+                    TargetPageType="{x:Type pages:SettingsPage}" />
             </ui:NavigationView.FooterMenuItems>
         </ui:NavigationView>
     </Grid>
