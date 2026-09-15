@@ -5,6 +5,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
     <ItemGroup>
-        <Folder Include="Providers\"/>
+      <PackageReference Include="NModbus" Version="4.0.0-alpha010" />
+      <PackageReference Include="NModbus4" Version="3.0.0-alpha2" />
+      <PackageReference Include="NModbusAsync" Version="3.0.2" />
     </ItemGroup>
 </Project>

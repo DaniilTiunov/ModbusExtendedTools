@@ -4,8 +4,10 @@ using ModbusExtendedTools.Desktop.Services;
 using ModbusExtendedTools.Desktop.ViewModels;
 using ModbusExtendedTools.Desktop.Views.Pages;
 using ModbusExtendedTools.Desktop.Views.Windows;
+using ModbusExtendedTools.Modbus.Services;
 using ModbusExtendedTools.Services.Adapters;
 using ModbusExtendedTools.Services.Notification;
+using ModbusExtendedTools.Services.Services;
 using ModbusExtendedTools.Services.Theming;
 
 namespace ModbusExtendedTools.Desktop.Bootstrap;
@@ -34,6 +36,8 @@ public static class DesktopHost
     {
         services.AddSingleton<IThemeService, ThemeService>();
         services.AddSingleton<AdapterService>();
+        services.AddSingleton<IExceptionService, ExceptionService>();
+        services.AddScoped<IModbusService,  ModbusService>();
         services.AddScoped<INotificationService, NotificationService>();
     }
 

@@ -38,7 +38,7 @@
                             Padding="8,3"
                             Background="{DynamicResource SurfaceHoverBrush}"
                             CornerRadius="10">
-                            <TextBlock FontSize="12" Text="0" />
+                            <TextBlock FontSize="12" Text="{Binding ModbusDevices.Count}" />
                         </Border>
                     </Grid>
                     <TextBlock
@@ -50,7 +50,8 @@
 
                     <ui:Button
                         Grid.Row="3"
-                        Appearance="Primary"
+                        Appearance="Secondary"
+                        Command="{Binding ScanDevicesAsyncCommand}"
                         Content="Найти устройства" />
 
                     <Border
@@ -60,14 +61,57 @@
                         BorderThickness="1"
                         CornerRadius="6">
                         <Grid>
-                            <ListBox
+                            <ui:ListView
+                                x:Name="ModbusDeviceList"
                                 Background="Transparent"
                                 BorderThickness="0"
-                                Foreground="{DynamicResource PrimaryTextBrush}" />
+                                Foreground="{DynamicResource PrimaryTextBrush}"
+                                ItemsSource="{Binding ModbusDevices}">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <EventSetter Event="MouseDoubleClick" Handler="Device_DoubleClick" />
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding IpAddress}">
+                                            <GridViewColumn.Header>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock
+                                                        FontSize="15"
+                                                        Foreground="{DynamicResource SecondaryTextBrush}"
+                                                        Text="IP Адрес" />
+                                                    <ui:SymbolIcon
+                                                        Margin="4,0,0,0"
+                                                        VerticalAlignment="Center"
+                                                        Foreground="{DynamicResource SecondaryTextBrush}"
+                                                        Symbol="DeviceEq24" />
+                                                </StackPanel>
+                                            </GridViewColumn.Header>
+                                        </GridViewColumn>
+                                        <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding PortNumber}">
+                                            <GridViewColumn.Header>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock
+                                                        FontSize="15"
+                                                        Foreground="{DynamicResource SecondaryTextBrush}"
+                                                        Text="Порт" />
+                                                    <ui:SymbolIcon
+                                                        Margin="4,0,0,0"
+                                                        VerticalAlignment="Center"
+                                                        Foreground="{DynamicResource SecondaryTextBrush}"
+                                                        Symbol="SerialPort24" />
+                                                </StackPanel>
+                                            </GridViewColumn.Header>
+                                        </GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ui:ListView>
                             <StackPanel
                                 Margin="16"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center">
+                                VerticalAlignment="Center"
+                                Visibility="Collapsed">
                                 <ui:SymbolIcon
                                     HorizontalAlignment="Center"
                                     Foreground="{DynamicResource SecondaryTextBrush}"
@@ -105,12 +149,6 @@
                             FontSize="17"
                             FontWeight="SemiBold"
                             Text="Сетевой адаптер ПК" />
-                        <TextBlock
-                            Margin="0,4,0,0"
-                            FontSize="12"
-                            Foreground="{DynamicResource SecondaryTextBrush}"
-                            Text="Выберите адаптер и задайте IP-адрес и маску подсети, в которой будет выполняться поиск устройств."
-                            TextWrapping="Wrap" />
 
                         <TextBlock
                             Margin="0,16,0,6"
@@ -145,22 +183,31 @@
 
                         <TextBlock
                             Margin="0,8,0,0"
-                            FontSize="12"
+                            FontSize="15"
                             Foreground="{DynamicResource SecondaryTextBrush}"
-                            Text="Например, IP 192.168.1.100 и маска 255.255.255.0 — поиск устройств будет выполняться в подсети 192.168.1.0."
-                            TextWrapping="Wrap" />
+                            TextWrapping="Wrap">
+                            <Run
+                                FontSize="15"
+                                FontWeight="Bold"
+                                Text="Параметр IP-" />
+                            <Run
+                                FontSize="15"
+                                FontWeight="Bold"
+                                Text="{Binding IpParameter}" />
+                        </TextBlock>
 
                         <StackPanel
-                            Margin="0,18,0,0"
-                            HorizontalAlignment="Right"
+                            Margin="0,10,0,0"
+                            HorizontalAlignment="Stretch"
                             Orientation="Horizontal">
                             <ui:Button
-                                Margin="0,0,8,0"
+                                Margin="0,0,10,0"
                                 Appearance="Secondary"
-                                Content="Отменить изменения" />
+                                Command="{Binding SetIpDynamicCommand}"
+                                Content="Установить DHCP" />
                             <ui:Button
                                 Appearance="Secondary"
-                                Command="{Binding ApplyCommand}"
+                                Command="{Binding SetIpAddressCommand}"
                                 Content="Применить настройки адаптера" />
                         </StackPanel>
                     </StackPanel>
@@ -248,7 +295,8 @@
                                     Background="{DynamicResource ApplicationBackgroundBrush}"
                                     BorderBrush="{DynamicResource BorderBrush}"
                                     Foreground="{DynamicResource PrimaryTextBrush}"
-                                    PlaceholderText="192.168.1.1" />
+                                    PlaceholderText="192.168.1.1"
+                                    Text="{Binding StartIpAddress}" />
                             </StackPanel>
                             <StackPanel Grid.Column="2">
                                 <TextBlock Style="{DynamicResource FieldLabelStyle}" Text="Конечный адрес" />
@@ -256,24 +304,12 @@
                                     Background="{DynamicResource ApplicationBackgroundBrush}"
                                     BorderBrush="{DynamicResource BorderBrush}"
                                     Foreground="{DynamicResource PrimaryTextBrush}"
-                                    PlaceholderText="192.168.1.254" />
+                                    PlaceholderText="192.168.1.254"
+                                    Text="{Binding EndIpAddress}" />
                             </StackPanel>
                         </Grid>
                     </StackPanel>
                 </Border>
-
-                <!--  Кнопки сохранения  -->
-                <StackPanel
-                    Margin="0,20,0,0"
-                    HorizontalAlignment="Right"
-                    Orientation="Horizontal">
-                    <ui:Button
-                        Margin="0,0,8,0"
-                        Appearance="Secondary"
-                        Content="Сбросить" />
-                    <ui:Button Appearance="Primary" Content="Сохранить" />
-                </StackPanel>
-
             </StackPanel>
         </ScrollViewer>
     </Grid>

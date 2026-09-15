@@ -8,7 +8,7 @@ namespace ModbusExtendedTools.Desktop.Views.Windows;
 
 public partial class NotifyWindow : Window
 {
-    public NotifyWindow(string message, NotificationType type = NotificationType.Info, string title = null)
+    public NotifyWindow(string message, NotificationType type = NotificationType.Info, string? title = null)
     {
         InitializeComponent();
 
