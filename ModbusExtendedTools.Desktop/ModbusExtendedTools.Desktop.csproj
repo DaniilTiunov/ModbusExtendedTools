@@ -6,7 +6,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UseWPF>true</UseWPF>
-        <ApplicationIcon>Resources\ModbusExtendedTools.ico</ApplicationIcon>
+        <ApplicationIcon>Resources\Assets\ModbusExtendedTools.ico</ApplicationIcon>
     </PropertyGroup>
 
     <ItemGroup>
@@ -19,26 +19,39 @@
 
     <ItemGroup>
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2"/>
-        <PackageReference Include="IPNetwork2" Version="4.3.0" />
-        <PackageReference Include="MaterialDesignThemes" Version="5.4.0-ci1482" />
+        <PackageReference Include="IPNetwork2" Version="4.3.0"/>
+        <PackageReference Include="MaterialDesignThemes" Version="5.4.0-ci1482"/>
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.0"/>
         <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.0"/>
         <PackageReference Include="WPF-UI" Version="4.0.3"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\ModbusExtendedTools.Extensions\ModbusExtendedTools.Extensions.csproj" />
+        <ProjectReference Include="..\ModbusExtendedTools.Extensions\ModbusExtendedTools.Extensions.csproj"/>
         <ProjectReference Include="..\ModbusExtendedTools.Modbus\ModbusExtendedTools.Modbus.csproj"/>
         <ProjectReference Include="..\ModbusExtendedTools.Services\ModbusExtendedTools.Services.csproj"/>
     </ItemGroup>
 
+
     <ItemGroup>
-      <None Remove="Resources\ModbusExtendedTools.ico" />
-      <Resource Include="Resources\ModbusExtendedTools.ico" />
+        <Resource Include="Resources\Assets\ModbusExtendedTools.ico">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Resource>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Resources\Assets\" />
+        <None Remove="Resources\Assets\Icon_Error.png"/>
+        <Content Include="Resources\Assets\Icon_Error.png">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <None Remove="Resources\Assets\IconConfirm.png"/>
+        <Content Include="Resources\Assets\IconConfirm.png">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <None Remove="Resources\Assets\IconInfo.png"/>
+        <Content Include="Resources\Assets\IconInfo.png">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
 </Project>

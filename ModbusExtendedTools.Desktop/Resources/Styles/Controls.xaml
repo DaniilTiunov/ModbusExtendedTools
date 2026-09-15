@@ -1,7 +1,7 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml" />
@@ -24,7 +24,7 @@
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
-    <Style TargetType="ui:Button" BasedOn="{StaticResource DefaultUiButtonStyle}">
+    <Style BasedOn="{StaticResource DefaultUiButtonStyle}" TargetType="ui:Button">
         <Setter Property="MinHeight" Value="36" />
         <Setter Property="Padding" Value="14,7" />
         <Setter Property="FontFamily" Value="Consolas" />
@@ -55,18 +55,18 @@
         <Setter Property="CaretBrush" Value="{DynamicResource PrimaryTextBrush}" />
     </Style>
 
-    <ControlTemplate TargetType="{x:Type ToggleButton}" x:Key="ComboBoxToggleButton">
+    <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
         <Border Background="Transparent" />
     </ControlTemplate>
 
-    <ControlTemplate TargetType="{x:Type TextBox}" x:Key="ComboBoxTextBox">
+    <ControlTemplate x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
         <Border
+            x:Name="PART_ContentHost"
             Background="{TemplateBinding Background}"
-            Focusable="False"
-            x:Name="PART_ContentHost" />
+            Focusable="False" />
     </ControlTemplate>
 
-    <Style TargetType="{x:Type ComboBox}" x:Key="{x:Type ComboBox}">
+    <Style x:Key="{x:Type ComboBox}" TargetType="{x:Type ComboBox}">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
@@ -81,97 +81,97 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
                     <Border
+                        x:Name="MainBorder"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="1"
                         CornerRadius="4"
-                        SnapsToDevicePixels="True"
-                        x:Name="MainBorder">
+                        SnapsToDevicePixels="True">
                         <Grid
+                            x:Name="MainGrid"
                             HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            x:Name="MainGrid">
+                            VerticalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="20" />
                             </Grid.ColumnDefinitions>
 
                             <ContentPresenter
+                                x:Name="ContentSite"
+                                Grid.Column="0"
+                                Margin="6,2,0,2"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="Center"
                                 Content="{TemplateBinding SelectionBoxItem}"
                                 ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                                 ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                Grid.Column="0"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                IsHitTestVisible="False"
-                                Margin="6,2,0,2"
-                                VerticalAlignment="Center"
-                                x:Name="ContentSite" />
+                                IsHitTestVisible="False" />
 
                             <TextBox
+                                x:Name="PART_EditableTextBox"
+                                Grid.Column="0"
+                                Margin="3,2,23,2"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
                                 Background="Transparent"
                                 Focusable="True"
-                                Grid.Column="0"
-                                HorizontalAlignment="Stretch"
                                 IsReadOnly="{TemplateBinding IsReadOnly}"
-                                Margin="3,2,23,2"
                                 Style="{x:Null}"
                                 Template="{StaticResource ComboBoxTextBox}"
-                                VerticalAlignment="Stretch"
-                                Visibility="Hidden"
-                                x:Name="PART_EditableTextBox" />
+                                Visibility="Hidden" />
 
                             <Path
-                                Data="M 0 0 L 4 4 L 8 0 Z"
-                                Fill="{DynamicResource AccentBrush}"
+                                x:Name="Arrow"
                                 Grid.Column="1"
                                 HorizontalAlignment="Center"
-                                IsHitTestVisible="False"
                                 VerticalAlignment="Center"
-                                x:Name="Arrow" />
+                                Data="M 0 0 L 4 4 L 8 0 Z"
+                                Fill="{DynamicResource AccentBrush}"
+                                IsHitTestVisible="False" />
 
                             <ToggleButton
+                                x:Name="ToggleButton"
+                                Grid.ColumnSpan="2"
+                                Width="{Binding ActualWidth, ElementName=MainGrid}"
+                                Height="{Binding ActualHeight, ElementName=MainGrid}"
+                                Margin="0"
+                                Padding="0"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Panel.ZIndex="100"
                                 Background="Transparent"
                                 BorderBrush="Transparent"
                                 Focusable="false"
-                                Grid.ColumnSpan="2"
-                                Height="{Binding ActualHeight, ElementName=MainGrid}"
-                                HorizontalAlignment="Stretch"
                                 IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                Margin="0"
-                                Padding="0"
-                                Panel.ZIndex="100"
                                 SnapsToDevicePixels="True"
-                                Template="{StaticResource ComboBoxToggleButton}"
-                                VerticalAlignment="Stretch"
-                                Width="{Binding ActualWidth, ElementName=MainGrid}"
-                                x:Name="ToggleButton" />
+                                Template="{StaticResource ComboBoxToggleButton}" />
 
                             <Popup
+                                x:Name="PART_Popup"
                                 AllowsTransparency="True"
                                 Focusable="False"
                                 IsOpen="{TemplateBinding IsDropDownOpen}"
                                 Placement="Bottom"
                                 PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                 PopupAnimation="Slide"
-                                StaysOpen="False"
-                                x:Name="PART_Popup">
+                                StaysOpen="False">
                                 <Grid
-                                    MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                    x:Name="DropDown"
                                     MinWidth="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
-                                    SnapsToDevicePixels="True"
-                                    x:Name="DropDown">
+                                    MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                    SnapsToDevicePixels="True">
                                     <Border
+                                        x:Name="DropDownBorder"
                                         Background="{DynamicResource SecondaryColor}"
                                         BorderBrush="{DynamicResource BorderBrush}"
                                         BorderThickness="1"
-                                        CornerRadius="2"
-                                        x:Name="DropDownBorder">
+                                        CornerRadius="2">
                                         <ScrollViewer
-                                            HorizontalScrollBarVisibility="Auto"
                                             Margin="2"
+                                            HorizontalScrollBarVisibility="Auto"
                                             SnapsToDevicePixels="True"
                                             VerticalScrollBarVisibility="Auto">
-                                            <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" x:Name="ItemsPresenter" />
+                                            <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" />
                                         </ScrollViewer>
                                     </Border>
                                 </Grid>
@@ -181,18 +181,18 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEditable" Value="true">
                             <Setter Property="IsTabStop" Value="false" />
-                            <Setter Property="Visibility" TargetName="PART_EditableTextBox" Value="Visible" />
-                            <Setter Property="Visibility" TargetName="ContentSite" Value="Hidden" />
+                            <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="ContentSite" Property="Visibility" Value="Hidden" />
                         </Trigger>
                         <Trigger Property="IsDropDownOpen" Value="True">
-                            <Setter Property="Data" TargetName="Arrow" Value="M 0 4 L 4 0 L 8 4 Z" />
+                            <Setter TargetName="Arrow" Property="Data" Value="M 0 4 L 4 0 L 8 4 Z" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Fill" TargetName="Arrow" Value="{DynamicResource DisabledForeground}" />
-                            <Setter Property="Opacity" TargetName="MainBorder" Value="0.6" />
+                            <Setter TargetName="Arrow" Property="Fill" Value="{DynamicResource DisabledForeground}" />
+                            <Setter TargetName="MainBorder" Property="Opacity" Value="0.6" />
                         </Trigger>
                         <Trigger Property="HasItems" Value="false">
-                            <Setter Property="MinHeight" TargetName="DropDownBorder" Value="95" />
+                            <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

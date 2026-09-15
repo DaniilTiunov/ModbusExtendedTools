@@ -1,3 +1,4 @@
+using System.Windows;
 using ModbusExtendedTools.Desktop.ViewModels;
 using ModbusExtendedTools.Desktop.Views.Pages;
 using Wpf.Ui.Controls;
@@ -7,7 +8,7 @@ namespace ModbusExtendedTools.Desktop.Views.Windows;
 public partial class MainWindow : FluentWindow
 {
     public MainWindow(
-        MainWindowViewModel viewModel, 
+        MainWindowViewModel viewModel,
         IServiceProvider serviceProvider)
     {
         InitializeComponent();
@@ -17,7 +18,7 @@ public partial class MainWindow : FluentWindow
         Loaded += OnLoaded;
     }
 
-    private void OnLoaded(object sender, System.Windows.RoutedEventArgs e)
+    private void OnLoaded(object sender, RoutedEventArgs e)
     {
         Loaded -= OnLoaded;
         RootNavigationView.Navigate(typeof(NetworkPage));

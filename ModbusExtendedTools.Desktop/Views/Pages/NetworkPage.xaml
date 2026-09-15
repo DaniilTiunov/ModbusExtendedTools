@@ -138,7 +138,8 @@
                                     Background="{DynamicResource ApplicationBackgroundBrush}"
                                     BorderBrush="{DynamicResource BorderBrush}"
                                     Foreground="{DynamicResource PrimaryTextBrush}"
-                                    PlaceholderText="255.255.255.0" />
+                                    PlaceholderText="255.255.255.0"
+                                    Text="{Binding SubnetMask}" />
                             </StackPanel>
                         </Grid>
 
@@ -149,25 +150,6 @@
                             Text="Например, IP 192.168.1.100 и маска 255.255.255.0 — поиск устройств будет выполняться в подсети 192.168.1.0."
                             TextWrapping="Wrap" />
 
-                        <Grid Margin="0,14,0,0" ColumnDefinitions="*,16,*">
-                            <StackPanel Grid.Column="0">
-                                <TextBlock Style="{DynamicResource FieldLabelStyle}" Text="Шлюз" />
-                                <ui:TextBox
-                                    Background="{DynamicResource ApplicationBackgroundBrush}"
-                                    BorderBrush="{DynamicResource BorderBrush}"
-                                    Foreground="{DynamicResource PrimaryTextBrush}"
-                                    PlaceholderText="192.168.1.1" />
-                            </StackPanel>
-                            <StackPanel Grid.Column="2">
-                                <TextBlock Style="{DynamicResource FieldLabelStyle}" Text="DNS-сервер" />
-                                <ui:TextBox
-                                    Background="{DynamicResource ApplicationBackgroundBrush}"
-                                    BorderBrush="{DynamicResource BorderBrush}"
-                                    Foreground="{DynamicResource PrimaryTextBrush}"
-                                    PlaceholderText="192.168.1.1" />
-                            </StackPanel>
-                        </Grid>
-
                         <StackPanel
                             Margin="0,18,0,0"
                             HorizontalAlignment="Right"
@@ -176,7 +158,10 @@
                                 Margin="0,0,8,0"
                                 Appearance="Secondary"
                                 Content="Отменить изменения" />
-                            <ui:Button Appearance="Primary" Content="Применить настройки адаптера" />
+                            <ui:Button
+                                Appearance="Secondary"
+                                Command="{Binding ApplyCommand}"
+                                Content="Применить настройки адаптера" />
                         </StackPanel>
                     </StackPanel>
                 </Border>

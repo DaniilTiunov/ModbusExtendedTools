@@ -40,9 +40,7 @@ public sealed class ThemeService : IThemeService
             appliedTheme == ApplicationTheme.Dark ? DarkPalette : LightPalette);
 
         if (Application.Current.TryFindResource("AccentColor") is Color accentColor)
-        {
             ApplicationAccentColorManager.Apply(accentColor, appliedTheme);
-        }
     }
 
     private static void ReplaceApplicationPalette(string palettePath)

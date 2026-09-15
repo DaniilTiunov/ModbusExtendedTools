@@ -1,55 +1,53 @@
 <ui:FluentWindow
+    x:Class="ModbusExtendedTools.Desktop.Views.Windows.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:ModbusExtendedTools.Desktop.Views.Pages"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Title="Modbus Extended Tools"
+    Width="1200"
+    Height="720"
+    MinWidth="1200"
+    MinHeight="800"
     Background="{DynamicResource ApplicationBackgroundBrush}"
     ExtendsContentIntoTitleBar="True"
     FontFamily="Consolas"
     FontSize="16"
     Foreground="{DynamicResource PrimaryTextBrush}"
-    Height="720"
-    Icon="pack://application:,,,/Resources/ModbusExtendedTools.ico"
-    MinHeight="800"
-    MinWidth="1200"
-    Title="Modbus Extended Tools"
-    Width="1200"
+    Icon="pack://application:,,,/Resources/Assets/ModbusExtendedTools.ico"
     WindowBackdropType="None"
     WindowCornerPreference="Round"
     WindowStartupLocation="CenterScreen"
-    mc:Ignorable="d"
-    x:Class="ModbusExtendedTools.Desktop.Views.Windows.MainWindow"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:pages="clr-namespace:ModbusExtendedTools.Desktop.Views.Pages"
-    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    mc:Ignorable="d">
     <Grid Background="{DynamicResource ApplicationBackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <ui:TitleBar
-            Background="{DynamicResource ApplicationBackgroundBrush}"
-            Foreground="{DynamicResource PrimaryTextBrush}"
-            Grid.Row="0"
+            x:Name="AppTitleBar"
             Title="Modbus Extended Tools"
-            x:Name="AppTitleBar">
+            Grid.Row="0"
+            Background="{DynamicResource ApplicationBackgroundBrush}"
+            Foreground="{DynamicResource PrimaryTextBrush}">
             <ui:TitleBar.Icon>
                 <ui:ImageIcon>
                     <ui:ImageIcon.Source>
-                        <BitmapImage UriSource="pack://application:,,,/Resources/ModbusExtendedTools.ico" />
+                        <BitmapImage UriSource="pack://application:,,,/Resources/Assets/ModbusExtendedTools.ico" />
                     </ui:ImageIcon.Source>
                 </ui:ImageIcon>
             </ui:TitleBar.Icon>
         </ui:TitleBar>
         <ui:NavigationView
+            x:Name="RootNavigationView"
+            Grid.Row="1"
             Background="{DynamicResource ApplicationBackgroundBrush}"
             Foreground="{DynamicResource PrimaryTextBrush}"
-            Grid.Row="1"
-            TitleBar="{Binding ElementName=AppTitleBar}"
-            x:Name="RootNavigationView">
+            TitleBar="{Binding ElementName=AppTitleBar}">
 
-            <ui:NavigationView.Resources>
-                <SolidColorBrush Color="{DynamicResource ApplicationBackgroundColor}" x:Key="NavigationViewContentBackground" />
-            </ui:NavigationView.Resources>
+            <ui:NavigationView.Resources />
 
             <ui:NavigationView.MenuItems>
                 <ui:NavigationViewItem

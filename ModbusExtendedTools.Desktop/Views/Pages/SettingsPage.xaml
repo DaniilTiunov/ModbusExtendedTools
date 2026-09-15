@@ -1,56 +1,56 @@
 <Page
-    Background="{DynamicResource ApplicationBackgroundBrush}"
-    FontFamily="Consolas"
-    Foreground="{DynamicResource PrimaryTextBrush}"
-    Title="Настройки"
-    mc:Ignorable="d"
     x:Class="ModbusExtendedTools.Desktop.Views.Pages.SettingsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    Title="Настройки"
+    Background="{DynamicResource ApplicationBackgroundBrush}"
+    FontFamily="Consolas"
+    Foreground="{DynamicResource PrimaryTextBrush}"
+    mc:Ignorable="d">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel
-            HorizontalAlignment="Left"
+            MaxWidth="800"
             Margin="32,28,32,32"
-            MaxWidth="800">
+            HorizontalAlignment="Left">
             <TextBlock
                 FontSize="28"
                 FontWeight="SemiBold"
                 Text="Настройки" />
             <TextBlock
-                Foreground="{DynamicResource SecondaryTextBrush}"
                 Margin="0,6,0,28"
+                Foreground="{DynamicResource SecondaryTextBrush}"
                 Text="Настройте внешний вид приложения." />
             <TextBlock
+                Margin="0,0,0,12"
                 FontSize="18"
                 FontWeight="SemiBold"
-                Margin="0,0,0,12"
                 Text="Внешний вид" />
             <ui:Card Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource BorderBrush}">
-                <Grid ColumnDefinitions="*,Auto" Margin="18,14">
+                <Grid Margin="18,14" ColumnDefinitions="*,Auto">
                     <StackPanel Grid.Column="0" VerticalAlignment="Center">
                         <TextBlock
                             FontSize="15"
                             FontWeight="SemiBold"
                             Text="Тёмная тема" />
                         <TextBlock
-                            Foreground="{DynamicResource SecondaryTextBrush}"
                             Margin="0,4,16,0"
+                            Foreground="{DynamicResource SecondaryTextBrush}"
                             Text="Изменения применяются сразу ко всему приложению."
                             TextWrapping="Wrap" />
                     </StackPanel>
                     <ui:ToggleSwitch
                         Grid.Column="1"
-                        IsChecked="{Binding IsDarkMode, Mode=TwoWay}"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        IsChecked="{Binding IsDarkMode, Mode=TwoWay}" />
                 </Grid>
             </ui:Card>
             <TextBlock
+                Margin="0,28,0,12"
                 FontSize="18"
                 FontWeight="SemiBold"
-                Margin="0,28,0,12"
                 Text="О приложении" />
             <ui:Card Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource BorderBrush}">
                 <StackPanel Margin="18,14">
@@ -59,21 +59,21 @@
                         FontWeight="SemiBold"
                         Text="Modbus Extended Tools" />
                     <TextBlock
-                        Foreground="{DynamicResource SecondaryTextBrush}"
                         Margin="0,6,0,0"
+                        Foreground="{DynamicResource SecondaryTextBrush}"
                         Text="Инструменты для работы с Modbus." />
-                    <Separator Background="{DynamicResource BorderBrush}" Margin="0,16" />
+                    <Separator Margin="0,16" Background="{DynamicResource BorderBrush}" />
                     <Grid ColumnDefinitions="140,*" RowDefinitions="Auto,Auto">
                         <TextBlock Foreground="{DynamicResource SecondaryTextBrush}" Text="Версия" />
                         <TextBlock Grid.Column="1" Text="1.0.0" />
                         <TextBlock
-                            Foreground="{DynamicResource SecondaryTextBrush}"
                             Grid.Row="1"
                             Margin="0,8,0,0"
+                            Foreground="{DynamicResource SecondaryTextBrush}"
                             Text="Платформа" />
                         <TextBlock
-                            Grid.Column="1"
                             Grid.Row="1"
+                            Grid.Column="1"
                             Margin="0,8,0,0"
                             Text=".NET 10 / WPF" />
                     </Grid>

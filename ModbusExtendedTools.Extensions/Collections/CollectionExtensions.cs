@@ -8,7 +8,7 @@ public static class CollectionExtensions
     {
         return new ObservableCollection<T>(items);
     }
-    
+
     public static IEnumerable<T> ToEnumerable<T>(this ObservableCollection<T> collection)
     {
         return collection;
